@@ -1,0 +1,23 @@
+name: Node CI
+
+on: [push]
+  branches:
+      - deploy
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Execute SSH commmands on remote server
+      uses: JimCronqvist/action-ssh@master
+      env:
+        NAME: "Root"
+      with:
+        hosts: ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}  
+        debug: true
+        command: |
+          pwd
+          echo "I am $NAME"
