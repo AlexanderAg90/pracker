@@ -1,4 +1,4 @@
-name: Node CI
+name: Django CI
 
 on: 
   push:
@@ -11,7 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Execute SSH commmands on remote server
+    - uses: actions/checkout@v1
+
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/home/pracker/"
+          EXCLUDE: "/.git/, /.github/, .gitIgnore, LICENSE, README.md, requirements.txt"
+
+    - name: Migrate
       uses: JimCronqvist/action-ssh@master
       env:
         NAME: "Root"
@@ -20,5 +31,9 @@ jobs:
         privateKey: ${{ secrets.SSH_PRIVATE_KEY }}  
         debug: true
         command: |
-          pwd
-          echo "I am $NAME"
+          cd /home/pracker/
+          source env/bin/activate
+          cd pracker_site
+          python manage.py makegrations
+          python manage.py migrate
+
