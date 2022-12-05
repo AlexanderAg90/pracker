@@ -2,4 +2,4 @@
 from django.http import HttpResponse
 
 def index(reqest):
-    return HttpResponse("This is the pracker index page!")
+    return HttpResponse("This is the pracker index page v2!")
