@@ -34,6 +34,6 @@ jobs:
           cd /home/pracker/
           source env/bin/activate
           cd pracker_site
-          python manage.py makegrations
+          python manage.py makemigrations
           python manage.py migrate
 
