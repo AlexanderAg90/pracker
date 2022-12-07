@@ -20,7 +20,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: "/home/pracker/"
-          EXCLUDE: "/.git/, /.github/, .gitIgnore, LICENSE, README.md, requirements.txt"
+          EXCLUDE: "/.git/, /.github/, .gitIgnore, LICENSE, README.md"
 
     - name: Migrate database and collect static files
       uses: JimCronqvist/action-ssh@master
@@ -33,7 +33,6 @@ jobs:
         command: |
           cd /home/pracker/
           source env/bin/activate
-          pip freeze > requirements.txt
           pip install -r requirements.txt
           cd pracker_site
           python manage.py makemigrations
