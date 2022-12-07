@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d+!dt%4!pg9-am+e5mqba$et_(-jiya!cn&23rrh!($ze6ax_q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['193.176.79.97']
+ALLOWED_HOSTS = ['193.176.79.97', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'catalog.apps.CatalogConfig',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MPTT_ADMIN_LEVEL_INDENT = 20
