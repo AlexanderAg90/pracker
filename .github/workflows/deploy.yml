@@ -33,6 +33,7 @@ jobs:
         command: |
           cd /home/pracker/
           source env/bin/activate
+          pip freeze > requirements.txt
           pip install -r requirements.txt
           cd pracker_site
           python manage.py makemigrations
