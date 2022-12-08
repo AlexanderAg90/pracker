@@ -1,5 +1,6 @@
-# from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 def index(reqest):
-    return HttpResponse("This is the pracker index page v2!")
+    template = loader.get_template('site_main.html')
+    return HttpResponse(template.render())
