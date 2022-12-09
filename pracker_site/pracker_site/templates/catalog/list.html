@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Catalog{% endblock %}
+
+{% load mptt_tags %}
+
+{% block content %}
+<div>
+    {% recursetree categories %}
+    <div style="padding-left: 10px;">
+       {{ node.name }}
+        {% if not node.is_leaf_node %}
+            {{ children }}
+        {% endif %}
+    </div>
+    {% endrecursetree %}
+</div>
+
+{% endblock %}
