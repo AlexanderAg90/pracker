@@ -1,13 +1,37 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Pracker site{% endblock %}</title>
+    {% load static %}
+    <link  rel="stylesheet" type="text/css" href="{% static 'pracker_site/css/bootstrap.css' %}" >
 </head>
 <body>
-    {% block content %}
-    <h1>PRACKER</h1>
-    <p>This is the pracker index page v4!</p>
-    {% endblock %}
+    <div class="container">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">
+                Pracker
+              </a>
+              <a href="/">Home</a>
+              <a href="/catalog">Catalog</a>
+              <form class="d-flex">
+                <a href="#" style="padding-right: 10px;">1</a>
+                <p >|</p>
+                <a href="#" style="padding-left: 10px;">2</a>
+              </form>
+            </div>
+          </nav>
+    </div>
+    <div class="container">
+        {% block content %}
+        <h1>PRACKER</h1>
+        <p>This is the pracker index page v5!</p>
+        {% endblock %}
+    </div>
+    <script src="{% static 'pracker_site/js/bootstrap.js' %}"></script>
 </body>
 </html>
