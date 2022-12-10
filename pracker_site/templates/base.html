@@ -18,11 +18,20 @@
               </a>
               <a href="/">Home</a>
               <a href="/catalog">Catalog</a>
+              {% if user.is_authenticated %}
+                <form class="d-flex">
+                  <P style="padding-right: 10px;">User: {{ user.get_username }}</p>
+                  <p >|</p>
+                  <a href="{% url 'logout' %}?next={{ request.path }}" style="padding-left: 10px;">Logout</a>
+                </form>
+              {% else %}
               <form class="d-flex">
-                <a href="#" style="padding-right: 10px;">1</a>
+                <a href="{% url 'login' %}?next={{ request.path }}" style="padding-right: 10px;">Sign in</a>
                 <p >|</p>
-                <a href="#" style="padding-left: 10px;">2</a>
+                <a href="#" style="padding-left: 10px;">Sign up</a>
               </form>
+              {% endif %}
+              
             </div>
           </nav>
     </div>
