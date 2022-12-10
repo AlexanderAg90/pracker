@@ -37,5 +37,3 @@ jobs:
           cd pracker_site
           python manage.py makemigrations
           python manage.py migrate
-          python manage.py collectstatic --clear --no-input
-          cp -r ./staticfiles/. ./static
