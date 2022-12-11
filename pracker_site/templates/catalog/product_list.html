@@ -7,6 +7,6 @@
 {% block content %}
     <h2>{{ category.name }}</h2>
 {% for product in products %}
-    <p>{{ product.name }}</p>
+    <div><a href="/catalog/product/{{product.slug}}/">{{ product.name }}</a></div>
 {% endfor %}
 {% endblock %}
