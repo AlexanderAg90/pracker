@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'hello.apps.HelloConfig',
+    'django_truncate',
     'mptt',
 ]
 

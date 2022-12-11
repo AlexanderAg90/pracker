@@ -9,3 +9,13 @@ def index(request):
         'categories': categories,
     }
     return HttpResponse(template.render(context, request))
+
+def show_category(request, category_slug):
+    template = loader.get_template('catalog/list.html')
+    category = Category.objects.get(slug=category_slug)
+    categories = category.get_descendants(include_self=True)
+    print(categories)
+    context = {
+        'categories': categories,
+    }
+    return HttpResponse(template.render(context, request))
