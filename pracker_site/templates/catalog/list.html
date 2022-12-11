@@ -8,12 +8,11 @@
 <div class="container">
     {% recursetree categories %}
     <div style="padding-left: 10px;">
-       {{ node.name }}
+       <a href="/catalog/category/{{node.slug}}">{{ node.name }}</a>
         {% if not node.is_leaf_node %}
             {{ children }}
         {% endif %}
     </div>
     {% endrecursetree %}
 </div>
-
 {% endblock %}
