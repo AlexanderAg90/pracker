@@ -26,7 +26,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(max_length=255, unique=True, null=True, db_index=True)
     attributes = models.JSONField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
 
     class Meta:
         ordering = ['name']
