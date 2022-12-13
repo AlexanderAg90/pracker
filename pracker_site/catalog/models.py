@@ -5,7 +5,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 class Category(MPTTModel):
     name = models.CharField(max_length=100, null=False, blank=False)
     slug = models.SlugField(max_length=255, unique=True, null=True, db_index=True)
-    allowed_attributes = models.JSONField(blank=True, null=True)
     parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
 
     class Meta:
@@ -25,7 +24,6 @@ class Category(MPTTModel):
 class Product(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(max_length=255, unique=True, null=True, db_index=True)
-    attributes = models.JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
 
     class Meta:
