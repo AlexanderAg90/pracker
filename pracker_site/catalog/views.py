@@ -15,7 +15,7 @@ def show_category(request, category_slug):
     try:
         category = Category.objects.get(slug=category_slug)
     except:
-        raise Http404("Ooops! This category cannot be found.")
+        raise Http404("Ooops! This category of products cannot be found.")
     if category and not category.is_leaf_node():
         template = loader.get_template('catalog/list.html')
         categories = category.get_descendants(include_self=True)

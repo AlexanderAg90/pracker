@@ -47,6 +47,7 @@ class Category(MPTTModel):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(max_length=255, unique=True, null=True, db_index=True)
